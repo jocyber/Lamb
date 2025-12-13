@@ -2,5 +2,6 @@
 #define LAMB_PCH
 
 #include <string>
+#include <cstdint>
 
 #endif

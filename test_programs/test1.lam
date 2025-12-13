@@ -1,10 +1,11 @@
 hello = \x -> + x 1
 hello1 = \ -> "hello, world"
+-- syntactic sugar for this is ** hello1 = "hello, world" **
 
 hello2 = \x -> {
-  (<= x 5) = 3 
-  (> x 6)  = 4
-  else     = -1
+  <= x 5 = 3 
+  > x 6  = 4
+  else   = -1
 }
 
 print (hello 3)  -- 4
