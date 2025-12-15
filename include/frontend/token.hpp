@@ -21,10 +21,10 @@ namespace lamb {
       TokenType type,
       std::uint32_t row_number,
       std::uint32_t column_number
-    ) : lexeme_(std::move(lexeme)),
-        type_(type),
-        row_number_(row_number),
-        column_number_(column_number) {}
+    ) : lexeme_{std::move(lexeme)},
+        type_{type},
+        row_number_{row_number},
+        column_number_{column_number} {}
 
     [[nodiscard]] const auto& lexeme() const noexcept { return lexeme_; }
     [[nodiscard]] auto type() const noexcept { return type_; }
