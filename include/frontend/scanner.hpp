@@ -5,7 +5,7 @@
 #include "token.hpp"
 
 namespace lamb {
-  std::vector<Token> scan_source(std::string_view source) noexcept;
+  auto scan_source(std::string_view source) noexcept -> std::vector<Token>;
 }
 
 #endif

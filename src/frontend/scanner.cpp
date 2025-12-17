@@ -1,13 +1,13 @@
 #include <unordered_set>
 #include <utility>
 
-#include "frontend/scanner.hpp"
-#include "frontend/token.hpp"
+#include "scanner.hpp"
+#include "token.hpp"
 
 static const std::unordered_set<std::string> KEYWORDS = { };
 
-std::vector<Token> scan_source(std::string_view source) noexcept {
-  auto result = std::vector<Token>(source.length);
+auto lamb::scan_source(std::string_view source) noexcept -> std::vector<Token> {
+  auto result = std::vector<Token>{};
 
   auto column_number = 0u;
   auto row_number = 0u;
@@ -21,7 +21,7 @@ std::vector<Token> scan_source(std::string_view source) noexcept {
       case '=': result.emplace_back("=", TokenType::Assignment, row_number, ++column_number); break;
       default: {
         // check if the first character is alphaNumeric, otherwise, this is an invalid token
-        const auto& identifier = munch_identifier(); // should return identifier and the rest of the list
+        const std::string identifier = "id"; // munch_identifier(); // should return identifier and the rest of the list
 
         // advance until we find a whitespace character or end of file
         if (KEYWORDS.contains(identifier)) {
@@ -29,20 +29,20 @@ std::vector<Token> scan_source(std::string_view source) noexcept {
             std::move(identifier), 
             TokenType::Keyword, 
             row_number, 
-            column_number += identifier.length
+            column_number += identifier.size()
           );
         } else {
           result.emplace_back(
             std::move(identifier), 
             TokenType::Identifier, 
             row_number, 
-            column_number += identifier.length
-          )
+            column_number += identifier.size()
+          );
         }
       }
     }
   }
 
-  result.shrink_to_fit();
+  // result.shrink_to_fit();
   return result;
 }
