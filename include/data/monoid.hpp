@@ -2,18 +2,19 @@
 #define MONOID_HPP
 
 #include <concepts>
+#include <type_traits>
 
+// TODO: have '+' come from semigroup concept
 namespace lamb {
-  template<class T>
-  T mempty() = delete;
-
-  template<class T>
-  auto mappend(T, T) -> T = delete;
+  template<typename T>
+  auto id() -> T = delete;
+  template<typename T>
+  auto operator+(T, T) -> T = delete;
 
   template<typename M>
-  concept Monoid = requires(M m) {
-    { mempty<M>(); } -> M;
-    { mappend(M, M); } -> M;
+  concept Monoid = requires(M m1, M m2) {
+    { id<M>() } -> std::same_as<M>;
+    { m1 + m2 } -> std::same_as<M>;
   };
 }
 
