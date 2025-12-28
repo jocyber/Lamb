@@ -6,10 +6,12 @@
 namespace lamb {
   enum class TokenType {
     Whitespace,
+    Comment,
     String_Literal,
     Number_Literal,
     Assignment,
     Lambda, // backspace or lambda unicode character
+    Arrow,
     Keyword,
     Identifier,
     Invalid

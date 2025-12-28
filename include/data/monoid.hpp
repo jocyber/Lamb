@@ -4,7 +4,6 @@
 #include <concepts>
 #include <type_traits>
 
-// TODO: have '+' come from semigroup concept
 namespace lamb {
   template<typename T>
   auto id() -> T = delete;
