@@ -1,7 +1,1 @@
-build/
-*.ll
-CMakeCache.txt
-Makefile
-**/CMakeFiles
-**/Makefile
-**/cmake_install.cmake
+dist-newstyle
